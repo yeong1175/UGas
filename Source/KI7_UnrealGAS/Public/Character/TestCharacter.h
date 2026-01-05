@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "AbilitySystemInterface.h"
+#include "GameplayEffectTypes.h"
 #include "TestCharacter.generated.h"
 
 class UStatusAttributeSet;
@@ -22,10 +23,20 @@ public:
 		return AbilitySystemComponent;
 	};
 
+	UFUNCTION(BlueprintCallable)
+	void TestHealthChange(float Amount);
+
 protected:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+private:
+	void OnHealthChange(const FOnAttributeChangeData& InData);
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Test")
+	float TestValue = 10.0f;
 
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Ability")
