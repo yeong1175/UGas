@@ -1,0 +1,37 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Character.h"
+#include "AbilitySystemInterface.h"
+#include "TestCharacter.generated.h"
+
+class UStatusAttributeSet;
+
+UCLASS()
+class KI7_UNREALGAS_API ATestCharacter : public ACharacter, public IAbilitySystemInterface
+{
+	GENERATED_BODY()
+
+public:
+	// Sets default values for this character's properties
+	ATestCharacter();
+
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override {
+		return AbilitySystemComponent;
+	};
+
+protected:
+	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+protected:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Ability")
+	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent = nullptr;
+	
+private:
+	UPROPERTY()
+	TObjectPtr<UStatusAttributeSet> StatusAttributeSet = nullptr;
+};
