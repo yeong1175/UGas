@@ -11,7 +11,7 @@ public class KI7_UnrealGAS : ModuleRules
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] { 
-			"GameplayAbilities", "GameplayTags", "GameplayTasks",
+			"GameplayAbilities",  "GameplayTasks",
 			"UMG"
         });
 
